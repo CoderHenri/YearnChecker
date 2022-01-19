@@ -1,0 +1,40 @@
+#webpage{
+    background-color: #252835;
+}
+
+#Headline {
+    font-size: 35px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(255, 255, 255);
+    /* text-shadow:
+      -2px -2px 0 #FF8C00,
+      0   -2px 0 #FF8C00,
+      2px -2px 0 #FF8C00,
+      2px  0   0 #FF8C00,
+      2px  2px 0 #FF8C00,
+      0    2px 0 #FF8C00,
+      -2px  2px 0 #FF8C00,
+      -2px  0   0 #FF8C00; */
+    text-align: center;
+    margin-top: 0px;
+}
+
+.StablecoinField {
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: italic;
+    color: rgb(255, 255, 255);
+    text-align: left;
+}
+
+.ButtonClass {
+    background-color: #ffffff; /* Green */
+    border: 1px solid rgba(#252835, 1);
+    color: #252835;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    display: inline-block;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
