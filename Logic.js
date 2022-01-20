@@ -68,12 +68,9 @@ async function GetStrategies(StratArray) {
     console.log(i);
     console.log(StratArray[0].strategies[i]);
 
-    var TempString = "0x82292b8035873d7dd8a96767f6b3f885564aa919";
+    var TempString = JSON.parse(JSON.stringify(StratArray[0].strategies[i].address));
     var StratID = TempString;
     console.log(StratID);
-
-    var MaxTest = JSON.stringify({      "query": "\n{\n strategies(where: {\n id: \""+ StratID +"\"\n }) {\n id\n reports(first: 10, orderBy: timestamp, orderDirection: desc) {\n id\n transaction {\n hash\n }\n timestamp\n gain\n loss\n totalGain\n totalLoss\n totalDebt\n debtLimit\n debtAdded\n debtPaid\n results {\n startTimestamp\n endTimestamp\n duration\n apr\n durationPr\n currentReport {\n id\n gain\n loss\n totalDebt\n totalGain\n totalLoss\n timestamp\n transaction { hash blockNumber }\n }\n previousReport {\n id\n gain\n loss\n totalDebt\n totalGain\n totalLoss\n timestamp\n transaction { hash blockNumber }\n }\n }\n }\n }\n }\n"});
-    console.log(MaxTest);
 
     //StratArray[0].strategies[i].address;
     //"0x82292b8035873d7dd8a96767f6b3f885564aa919"
@@ -87,7 +84,7 @@ async function GetStrategies(StratArray) {
         },
             
         body: JSON.stringify({
-          "query": "\n{\n strategies(where: {\n id: \""+ StratID +"\"\n }) {\n id\n reports(first: 10, orderBy: timestamp, orderDirection: desc) {\n id\n transaction {\n hash\n }\n timestamp\n gain\n loss\n totalGain\n totalLoss\n totalDebt\n debtLimit\n debtAdded\n debtPaid\n results {\n startTimestamp\n endTimestamp\n duration\n apr\n durationPr\n currentReport {\n id\n gain\n loss\n totalDebt\n totalGain\n totalLoss\n timestamp\n transaction { hash blockNumber }\n }\n previousReport {\n id\n gain\n loss\n totalDebt\n totalGain\n totalLoss\n timestamp\n transaction { hash blockNumber }\n }\n }\n }\n }\n }\n"})
+          "query":"\n{\n    strategies(where: {\n      id: \""+StratID+"\"\n    }) {\n        id\n        reports(first: 10, orderBy: timestamp, orderDirection: desc)  {\n          id\n          transaction {\n            hash\n          }\n          timestamp\n          gain\n          loss\n          totalGain\n          totalLoss\n          totalDebt\n          debtLimit\n          debtAdded\n          debtPaid\n          results {\n            startTimestamp\n            endTimestamp\n            duration\n            apr\n            durationPr\n            currentReport {\n                id\n                gain\n                loss\n                totalDebt\n                totalGain\n                totalLoss\n                timestamp\n                transaction { hash blockNumber }\n            }\n            previousReport {\n                id\n                gain\n                loss\n                totalDebt\n                totalGain\n                totalLoss\n                timestamp\n                transaction { hash blockNumber }\n            }\n          }\n        }\n      }\n  }\n"})
     })
     .then(function(response) { 
         return response.json(); 
