@@ -68,22 +68,7 @@ async function GetStrategies(StratArray) {
     console.log(i);
     console.log(StratArray[0].strategies[i]);
 
-    console.log(StratArray[0].strategies[i]);
-    console.log(StratArray[0].strategies[i].address);
-    console.log(String(StratArray[0].strategies[i].address));
-    console.log("0x82292b8035873d7dd8a96767f6b3f885564aa919");
-    console.log(String("0x82292b8035873d7dd8a96767f6b3f885564aa919"));
-
-    console.log(JSON.stringify(StratArray[0].strategies[i]));
-    console.log(JSON.stringify(StratArray[0].strategies[i].address));
-    console.log(JSON.stringify(String(StratArray[0].strategies[i].address)));
-    console.log(JSON.stringify("0x82292b8035873d7dd8a96767f6b3f885564aa919"));
-    console.log(JSON.stringify(String("0x82292b8035873d7dd8a96767f6b3f885564aa919")));
-
-    console.log(typeof(StratArray[0].strategies[i].address));
-    console.log(typeof(String(StratArray[0].strategies[i].address)));
-
-    var TempString = JSON.stringify(StratArray[0].strategies[i].address) +"";
+    var TempString = "0x82292b8035873d7dd8a96767f6b3f885564aa919";
     var StratID = TempString;
     console.log(StratID);
 
@@ -91,6 +76,7 @@ async function GetStrategies(StratArray) {
     console.log(MaxTest);
 
     //StratArray[0].strategies[i].address;
+    //"0x82292b8035873d7dd8a96767f6b3f885564aa919"
 
     //Query Yearn.Watch Data
     await  fetch(url, {
