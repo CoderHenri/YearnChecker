@@ -64,38 +64,132 @@ async function GetStrategies(StratArray) {
 
   var url = "https://api.thegraph.com/subgraphs/name/salazarguille/yearn-vaults-v2-subgraph-mainnet";
 
-  for(i=0; i<StratArray[0].strategies.length; i++) {
-    console.log(i);
-    console.log(StratArray[0].strategies[i]);
-
-    var TempString = JSON.parse(JSON.stringify(StratArray[0].strategies[i].address));
-    var StratID = TempString;
-    console.log(StratID);
-
-    //StratArray[0].strategies[i].address;
-    //"0x82292b8035873d7dd8a96767f6b3f885564aa919"
-
-    //Query Yearn.Watch Data
-    await  fetch(url, {
+      await  fetch(url, {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "application/json;charset=utf-8",
+          "User-Agent": "Mozilla/4.0 (compatible)",
           "Accept": "application/json",
         },
             
         body: JSON.stringify({
-          "query":"\n{\n    strategies(where: {\n      id: \""+StratID+"\"\n    }) {\n        id\n        reports(first: 10, orderBy: timestamp, orderDirection: desc)  {\n          id\n          transaction {\n            hash\n          }\n          timestamp\n          gain\n          loss\n          totalGain\n          totalLoss\n          totalDebt\n          debtLimit\n          debtAdded\n          debtPaid\n          results {\n            startTimestamp\n            endTimestamp\n            duration\n            apr\n            durationPr\n            currentReport {\n                id\n                gain\n                loss\n                totalDebt\n                totalGain\n                totalLoss\n                timestamp\n                transaction { hash blockNumber }\n            }\n            previousReport {\n                id\n                gain\n                loss\n                totalDebt\n                totalGain\n                totalLoss\n                timestamp\n                transaction { hash blockNumber }\n            }\n          }\n        }\n      }\n  }\n"})
-    })
-    .then(function(response) { 
-        return response.json(); 
-    })
-        
-    .then(function(data) {
-      console.log(data);
-      USDTArray.push(data);
-      USDTArray[i+1].data.strategies.push(StratArray[0].strategies[i].name);
-    });
-  }
+          "query":"\n{\n    strategies(where: {\n      id: \"0x01b54c320d6b3057377cbc71d953d1bba84df44e\"\n    }) {\n        id\n        reports(first: 10, orderBy: timestamp, orderDirection: desc)  {\n          id\n          transaction {\n            hash\n          }\n          timestamp\n          gain\n          loss\n          totalGain\n          totalLoss\n          totalDebt\n          debtLimit\n          debtAdded\n          debtPaid\n          results {\n            startTimestamp\n            endTimestamp\n            duration\n            apr\n            durationPr\n            currentReport {\n                id\n                gain\n                loss\n                totalDebt\n                totalGain\n                totalLoss\n                timestamp\n                transaction { hash blockNumber }\n            }\n            previousReport {\n                id\n                gain\n                loss\n                totalDebt\n                totalGain\n                totalLoss\n                timestamp\n                transaction { hash blockNumber }\n            }\n          }\n        }\n      }\n  }\n"})
+      })
+      .then(function(response) { 
+          return response.json(); 
+      })
+          
+      .then(function(data) {
+        console.log(data);
+        USDTArray.push(data);
+        USDTArray[1].data.strategies.push(StratArray[0].strategies[0].name);
+      });
+
+      await  fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json;charset=utf-8",
+          "User-Agent": "Mozilla/4.0 (compatible)",
+          "Accept": "application/json",
+        },
+            
+        body: JSON.stringify({
+          "query":"\n{\n    strategies(where: {\n      id: \"0x2f87c5e8396f0c41b86aad4f3c8358ab21681952\"\n    }) {\n        id\n        reports(first: 10, orderBy: timestamp, orderDirection: desc)  {\n          id\n          transaction {\n            hash\n          }\n          timestamp\n          gain\n          loss\n          totalGain\n          totalLoss\n          totalDebt\n          debtLimit\n          debtAdded\n          debtPaid\n          results {\n            startTimestamp\n            endTimestamp\n            duration\n            apr\n            durationPr\n            currentReport {\n                id\n                gain\n                loss\n                totalDebt\n                totalGain\n                totalLoss\n                timestamp\n                transaction { hash blockNumber }\n            }\n            previousReport {\n                id\n                gain\n                loss\n                totalDebt\n                totalGain\n                totalLoss\n                timestamp\n                transaction { hash blockNumber }\n            }\n          }\n        }\n      }\n  }\n"})
+      })
+      .then(function(response) { 
+          return response.json(); 
+      })
+          
+      .then(function(data) {
+        console.log(data);
+        USDTArray.push(data);
+        USDTArray[2].data.strategies.push(StratArray[0].strategies[1].name);
+      });
+
+      await  fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json;charset=utf-8",
+          "User-Agent": "Mozilla/4.0 (compatible)",
+          "Accept": "application/json",
+        },
+            
+        body: JSON.stringify({
+          "query":"\n{\n    strategies(where: {\n      id: \"0x82292b8035873d7dd8a96767f6b3f885564aa919\"\n    }) {\n        id\n        reports(first: 10, orderBy: timestamp, orderDirection: desc)  {\n          id\n          transaction {\n            hash\n          }\n          timestamp\n          gain\n          loss\n          totalGain\n          totalLoss\n          totalDebt\n          debtLimit\n          debtAdded\n          debtPaid\n          results {\n            startTimestamp\n            endTimestamp\n            duration\n            apr\n            durationPr\n            currentReport {\n                id\n                gain\n                loss\n                totalDebt\n                totalGain\n                totalLoss\n                timestamp\n                transaction { hash blockNumber }\n            }\n            previousReport {\n                id\n                gain\n                loss\n                totalDebt\n                totalGain\n                totalLoss\n                timestamp\n                transaction { hash blockNumber }\n            }\n          }\n        }\n      }\n  }\n"})
+      })
+      .then(function(response) { 
+          return response.json(); 
+      })
+          
+      .then(function(data) {
+        console.log(data);
+        USDTArray.push(data);
+        USDTArray[3].data.strategies.push(StratArray[0].strategies[2].name);
+      });
+
+      await  fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json;charset=utf-8",
+          "User-Agent": "Mozilla/4.0 (compatible)",
+          "Accept": "application/json",
+        },
+            
+        body: JSON.stringify({
+          "query":"\n{\n    strategies(where: {\n      id: \"0x3ef6ec70d4d8fe69365c92086d470bb7d5fc92eb\"\n    }) {\n        id\n        reports(first: 10, orderBy: timestamp, orderDirection: desc)  {\n          id\n          transaction {\n            hash\n          }\n          timestamp\n          gain\n          loss\n          totalGain\n          totalLoss\n          totalDebt\n          debtLimit\n          debtAdded\n          debtPaid\n          results {\n            startTimestamp\n            endTimestamp\n            duration\n            apr\n            durationPr\n            currentReport {\n                id\n                gain\n                loss\n                totalDebt\n                totalGain\n                totalLoss\n                timestamp\n                transaction { hash blockNumber }\n            }\n            previousReport {\n                id\n                gain\n                loss\n                totalDebt\n                totalGain\n                totalLoss\n                timestamp\n                transaction { hash blockNumber }\n            }\n          }\n        }\n      }\n  }\n"})
+      })
+      .then(function(response) { 
+          return response.json(); 
+      })
+          
+      .then(function(data) {
+        console.log(data);
+        USDTArray.push(data);
+        USDTArray[4].data.strategies.push(StratArray[0].strategies[3].name);
+      });
+
+      await  fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json;charset=utf-8",
+          "User-Agent": "Mozilla/4.0 (compatible)",
+          "Accept": "application/json",
+        },
+            
+        body: JSON.stringify({
+          "query":"\n{\n    strategies(where: {\n      id: \"0x65a8efc842d2ba536d3f781f504a1940f61124b4\"\n    }) {\n        id\n        reports(first: 10, orderBy: timestamp, orderDirection: desc)  {\n          id\n          transaction {\n            hash\n          }\n          timestamp\n          gain\n          loss\n          totalGain\n          totalLoss\n          totalDebt\n          debtLimit\n          debtAdded\n          debtPaid\n          results {\n            startTimestamp\n            endTimestamp\n            duration\n            apr\n            durationPr\n            currentReport {\n                id\n                gain\n                loss\n                totalDebt\n                totalGain\n                totalLoss\n                timestamp\n                transaction { hash blockNumber }\n            }\n            previousReport {\n                id\n                gain\n                loss\n                totalDebt\n                totalGain\n                totalLoss\n                timestamp\n                transaction { hash blockNumber }\n            }\n          }\n        }\n      }\n  }\n"})
+      })
+      .then(function(response) { 
+          return response.json(); 
+      })
+          
+      .then(function(data) {
+        console.log(data);
+        USDTArray.push(data);
+        USDTArray[5].data.strategies.push(StratArray[0].strategies[4].name);
+      });
+
+      await  fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json;charset=utf-8",
+          "User-Agent": "Mozilla/4.0 (compatible)",
+          "Accept": "application/json",
+        },
+            
+        body: JSON.stringify({
+          "query":"\n{\n    strategies(where: {\n      id: \"0x92c212f4d6a8ad964acae745e1b45309b470af6e\"\n    }) {\n        id\n        reports(first: 10, orderBy: timestamp, orderDirection: desc)  {\n          id\n          transaction {\n            hash\n          }\n          timestamp\n          gain\n          loss\n          totalGain\n          totalLoss\n          totalDebt\n          debtLimit\n          debtAdded\n          debtPaid\n          results {\n            startTimestamp\n            endTimestamp\n            duration\n            apr\n            durationPr\n            currentReport {\n                id\n                gain\n                loss\n                totalDebt\n                totalGain\n                totalLoss\n                timestamp\n                transaction { hash blockNumber }\n            }\n            previousReport {\n                id\n                gain\n                loss\n                totalDebt\n                totalGain\n                totalLoss\n                timestamp\n                transaction { hash blockNumber }\n            }\n          }\n        }\n      }\n  }\n"})
+      })
+      .then(function(response) { 
+          return response.json(); 
+      })
+          
+      .then(function(data) {
+        console.log(data);
+        USDTArray.push(data);
+        USDTArray[6].data.strategies.push(StratArray[0].strategies[5].name);
+      });
+    
     console.log(USDTArray);
 }
 
