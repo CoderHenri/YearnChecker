@@ -191,9 +191,24 @@ async function GetStrategies(StratArray) {
       });
     
     console.log(USDTArray);
+
+    //PieChartmaker
+    var TempChartArray = [];
+
+    for(i=1; i<2; i++) { //geht durch die verschiedenen Strategien
+      if(USDTArray[i+1].data.strategies[0].reports[0].results[0].currentReport.totalDebt != 0) {
+        alert(USDTArray[i+1].data.strategies[0].reports[0].results[0].currentReport.totalDebt / 1000000);
+      }
+
+      PieChartMaker(TempChartArray, "USDTPieChart");
+    }
 }
 
-function ChartMaker(Array, WhichChart) {
+function USDTUIWriter(Array) {
+
+}
+
+function PieChartMaker(Array, WhichChart) {
 
     var RestMenge = 0;
     for(i=9; Array.length > i; i++) {
@@ -221,7 +236,7 @@ function ChartMaker(Array, WhichChart) {
       data: {
         labels: LandBesitzer,
         datasets: [{
-            label: 'Axie Land',
+            label: 'Vault Allocations',
             data: LandMenge,
             backgroundColor: [
               'rgba(0,104,55, 0.25)',
@@ -280,4 +295,93 @@ function ChartMaker(Array, WhichChart) {
         }
       }
     })
+}
+
+function LineChartMaker(Array, WhichChart) {
+
+  var RestMenge = 0;
+  for(i=9; Array.length > i; i++) {
+    RestMenge = RestMenge + Array[i].amount;
+  }
+
+  var GesamtMenge = 0;
+  for(i=0; Array.length > i; i++) {
+    GesamtMenge = GesamtMenge + Array[i].amount;
+  }
+
+  var ctx = document.getElementById(WhichChart);
+
+  var TotalLand = 0;
+
+  for(m=0; Array.length > m; m++){
+    TotalLand = TotalLand + Array[m].amount;
+  }
+
+  var LandMenge = [Array[0].amount, Array[1].amount, Array[2].amount, Array[3].amount, Array[4].amount, Array[5].amount, Array[6].amount, Array[7].amount, Array[8].amount, RestMenge];
+  var LandBesitzer = [Array[0].Profile, Array[1].Profile, Array[2].Profile, Array[3].Profile, Array[4].Profile, Array[5].Profile, Array[6].Profile, Array[7].Profile, Array[8].Profile, "All other Players"];
+
+  var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: LandBesitzer,
+      datasets: [{
+          label: 'Vault Allocations',
+          data: LandMenge,
+          backgroundColor: [
+            'rgba(0,104,55, 0.25)',
+            'rgba(165,0,38, 0.25)',
+            'rgba(26,152,80, 0.25)',
+            'rgba(215,48,39, 0.25)',
+            'rgba(102,189,99, 0.25)',
+            'rgba(244,109,67, 0.25)',
+            'rgba(166,217,106, 0.25)',
+            'rgba(253,174,97, 0.25)',
+            'rgba(217,239,139, 0.25)',
+            'rgba(254,224,139, 0.25)'
+          ],
+          borderColor: [
+            'rgba(0,104,55, 1)',
+            'rgba(165,0,38, 1)',
+            'rgba(26,152,80, 1)',
+            'rgba(215,48,39, 1)',
+            'rgba(102,189,99, 1)',
+            'rgba(244,109,67, 1)',
+            'rgba(166,217,106, 1)',
+            'rgba(253,174,97, 1)',
+            'rgba(217,239,139, 1)',
+            'rgba(254,224,139, 1)'
+          ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      title: {
+        display: true,
+        position: 'top',
+        fontSize: 17,
+        fontFamily: 'Arial',
+        text: "Total Amount: " + TotalLand
+      },
+      tooltips: {
+        displayColors: false,
+        callbacks: {
+          afterLabel: function(tooltipItem, data) {
+            var dataset = data['datasets'][0];
+            var percent = Math.round((dataset['data'][tooltipItem['index']] / GesamtMenge) * 100)
+            return '(' + percent + '%)';
+          }
+        },
+      },
+      responsive: false,
+      legend: {
+        display: true,
+        position: 'bottom',
+        labels: {
+          fontColor: '#FFFFFF',
+          boxWidth: 15,
+          fontSize: 13
+        }
+      }
+    }
+  })
 }

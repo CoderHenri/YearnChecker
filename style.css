@@ -19,22 +19,50 @@
     margin-top: 0px;
 }
 
-.StablecoinField {
+#USDTGridContainer {
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 25px;
+    width: 875px;
+    height: auto;
+    position: relative;
+    display: grid;
+    grid-template-columns: 500px 375px;
+}
+
+.USDTClassField {
+    grid-column: 1;
+
     font-size: 20px;
     font-family: Arial, Helvetica, sans-serif;
     font-style: italic;
     color: rgb(255, 255, 255);
     text-align: left;
+    grid-row-gap: 1px;
+
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    margin-left: auto;
+    margin-right: auto;
+    width: 500px;
+    height: 375px;
+    position: relative;
+    display: grid;
+    grid-template-rows: 30px 30px 30px 30px 90px 30px 30px 30px 30px 30px ;
+    grid-template-columns: 250px 250px;
+    row-gap: 5px;
 }
 
 .ButtonClass {
+    width: 100%;
     background-color: #ffffff; /* Green */
     border: 1px solid rgba(#252835, 1);
     color: #252835;
-    font-family: Arial, Helvetica, sans-serif;
     text-align: center;
-    display: inline-block;
     font-size: 20px;
     cursor: pointer;
-  }
-  
+}
+
+.USDTStratInfo {
+    grid-column: auto;
+}

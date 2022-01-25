@@ -13,29 +13,40 @@
 <body id="webpage" onload="LoadYearnWatchData()">
     <div id="Headline"> YearnChecker, a HenriCoder Production </div>
 
-    <div class="StablecoinField" id="USDTField"> USDT 
+    <div id="USDTGridContainer">
+        <div class="USDTClassField" id="USDTField">
 
-        <button class="StandardDIV" class="ButtonClass" id="USDTAmountInput" onclick="InputYourUSDTAmount()" disabled> Loading Yearn Data, please wait :D </button>
-        
-        <div class="StratInfo" id="USDTStrategyNameHeader"> Strategyname </div>
-        <div class="StratInfo" id="USDTStrategyName"> StrategyName </div>
+            <button class="StandardDIV" class="ButtonClass" id="USDTAmountInput" onclick="InputYourUSDTAmount()" disabled> Loading Yearn Data, please wait :D </button>
+            <div id="EmptyDIVforCSS"></div>
 
-        <div class="StratInfo" id="USDTStrategyAPRHeader"> Strategy APR </div>
-        <div class="StratInfo" id="USDTStrategyAPR"> [%] </div>
+            <div class="USDTStratInfo" id="USDTStrategyNameHeader"> Strategyname </div>
+            <div class="USDTStratInfo" id="USDTStrategyName"> StrategyName </div>
 
-        <div class="StratInfo" id="USDTStrategyAmountHeader"> Strategy Allocation </div>
-        <div class="StratInfo" id="USDTStrategyAmount"> [USDT] </div>
+            <div class="USDTStratInfo" id="USDTStrategyAPRHeader"> Strategy APR </div>
+            <div class="USDTStratInfo" id="USDTStrategyAPR"> [%] </div>
 
-        <div class="StratInfo" id="USDTStrategyAllocationHeader"> Strategy Allocation [%] </div>
-        <div class="StratInfo" id="USDTStrategyAllocation"> [%] </div>
+            <div class="USDTStratInfo" id="USDTStrategyOldAPRHeader"> Old Strategy APR </div>
+            <div class="USDTStratInfo" id="USDTStrategyOldAPR"> Linechart </div>
 
-        <div class="StratInfo" id="USDTStrategyYourShareHeader"> Your Share [%] </div>
-        <div class="StratInfo" id="USDTStrategyYourShare"> [%] </div>
+            <div class="USDTStratInfo" id="USDTStrategyAmountHeader"> Strategy Allocation </div>
+            <div class="USDTStratInfo" id="USDTStrategyAmount"> [USDT] </div>
 
+            <div class="USDTStratInfo" id="USDTStrategyAllocationHeader"> Strategy Allocation </div>
+            <div class="USDTStratInfo" id="USDTStrategyAllocation"> USDT/[%] </div>
+
+            <div class="USDTStratInfo" id="USDTStrategyYourShareHeader"> Your Share </div>
+            <div class="USDTStratInfo" id="USDTStrategyYourShare"> USDT/[%] </div>
+
+            <div class="USDTStratInfo" id="USDTStrategyCurrentProfitHeader"> Strategy Profit </div>
+            <div class="USDTStratInfo" id="USDTStrategyCurrentProfit"> USDT/[%] </div>
+
+            <div class="USDTStratInfo" id="USDTStrategyYourProfitHeader"> Your Profit </div>
+            <div class="USDTStratInfo" id="USDTStrategyYourProfit"> USDT/[%] </div>
+
+        </div>
         <div>
-            <canvas class="ClassChart" id="USDTChart" width="500" height="480"></canvas>
+            <canvas class="PieChart" id="USDTPieChart" width="370" height="370"></canvas>
         </div>
     </div>
-
 </body>
 </html>
